@@ -1,45 +1,46 @@
 import { Request, Response } from "express"
 import { errorResponse } from "../../api/ApiResponse"
+import { projectService } from './project.service';
 
-const getAllBlogs =async(req:Request,res:Response)=>{
+const getAllProject =async(req:Request,res:Response)=>{
     try {
-        const blogs = await blogService.getAllBlogs()
-        res.status(200).json(blogs)
+        const projects = await projectService.getAllProject()
+        res.status(200).json(projects)
     } catch (error:any) {
         return errorResponse(error)
     }
 }
 
-const getSingleBlog = async(req:Request,res:Response)=>{
+const getSingleProject = async(req:Request,res:Response)=>{
     try {
-        const blog = await blogService.getSingleBlog(Number(req.params.id))
-        res.status(200).json(blog)
+        const project = await projectService.getSingleProject(Number(req.params.id))
+        res.status(200).json(project)
     } catch (error:any) {
         return errorResponse(error)
     }
 }
 
-const createBlog = async(req:Request,res:Response)=>{
+const createProject = async(req:Request,res:Response)=>{
     try {
-        const result = await blogService.createBlog(req.body)
+        const result = await projectService.createProject(req.body)
         res.status(201).json(result)
     } catch (error:any) {
         return errorResponse(error)
     }
 }
 
-const updateBlog = async(req:Request,res:Response)=>{
+const updateProject = async(req:Request,res:Response)=>{
     try {
-        const result = await blogService.updateBlog(req.body,Number(req.params.id))
+        const result = await projectService.updateProject(req.body,Number(req.params.id))
         res.status(200).json(result)
     } catch (error:any) {
         return errorResponse(error)
     }
 }
 
-const deleteBlog = async(req:Request,res:Response)=>{
+const deleteProject = async(req:Request,res:Response)=>{
     try {
-        const result = await blogService.deleteBlog(Number(req.params.id))
+        const result = await projectService.deleteProject(Number(req.params.id))
         res.status(200).json(result)
     } catch (error:any) {
         return errorResponse(error)
