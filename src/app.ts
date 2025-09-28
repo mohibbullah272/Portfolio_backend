@@ -2,6 +2,7 @@ import compression from "compression";
 import cors from "cors";
 import express from "express";
 import { authRouter } from "./modules/auth/auth.route";
+import { blogRouter } from "./modules/blogs/blogs.route";
 
 
 const app = express();
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/user',authRouter)
-
+app.use('/blog',blogRouter)
 
 app.get("/", (_req, res) => {
   res.send("API is running");

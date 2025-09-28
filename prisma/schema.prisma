@@ -27,13 +27,15 @@ model User {
 }
 
 model Blogs {
-  id Int @id @default(autoincrement())
-  title String
-  content String
-  thumbnail  String 
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  thumbnail String
+  viewCount Int      @default(0) 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
 
 model Projects {
   id Int @id @default(autoincrement())
@@ -43,6 +45,7 @@ model Projects {
   features String[]
   projectLink String
   liveLink String
+  viewCount Int      @default(0) 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

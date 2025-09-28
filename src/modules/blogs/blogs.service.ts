@@ -14,6 +14,16 @@ const getAllBlogs =async()=>{
 }
 const getSingleBlog = async(id:number)=>{
     try {
+     await prisma.blogs.update({
+            where:{
+                id
+            },
+            data:{
+                viewCount:{
+                    increment:1
+                }
+            }
+        })
         const blog = await prisma.blogs.findUnique({
             where:{
                 id
@@ -72,4 +82,13 @@ const deleteBlog = async(id:number)=>{
         console.log(error)
         return errorResponse(error)
     }
+}
+
+
+export const blogService ={
+    getAllBlogs,
+    getSingleBlog,
+    deleteBlog,
+    updateBlog,
+    createBlog
 }
