@@ -1,6 +1,7 @@
 import compression from "compression";
 import cors from "cors";
 import express from "express";
+import { authRouter } from "./modules/auth/auth.route";
 
 
 const app = express();
@@ -12,7 +13,7 @@ app.use(express.json());
 
 app.use(cors());
 
-
+app.use('/user',authRouter)
 
 
 app.get("/", (_req, res) => {

@@ -3,21 +3,7 @@ import { Prisma } from '@prisma/client';
 import prisma from '../../config/db';
 
 
-const getMe =async(email:string,password:string)=>{
-try {
-    if(!email){
-        return {success:false, error:"email is required"}
-    }
-    const result = await prisma.user.findUnique({
-        where:{
-            email
-        }
-    })
-    return {success : true , error:false , data:result}
-} catch (error:any ) {
-    return {success:false, error:error?.message|| 'something went wrong'}
-}
-}
+
 
 const createAccount = async(payload:Prisma.UserCreateInput)=>{
     try {
