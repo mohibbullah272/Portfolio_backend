@@ -21,6 +21,7 @@ model User {
   id    Int    @id   @default(autoincrement())
   email String @unique
   name String 
+  role     String  @default("user")
   password String?
   avatar String
 
@@ -43,6 +44,7 @@ model Projects {
   description String
   thumbnail  String 
   features String[]
+  technology String[]
   projectLink String
   liveLink String
   viewCount Int      @default(0) 

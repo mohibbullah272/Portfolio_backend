@@ -6,8 +6,8 @@ import { authController } from "./auth.controller";
 const router = Router()
 
 
-router.post("/auth/register",authController.createUser)
-router.post('/auth/login',authController.loginUser)
+router.post("/register",authController.createUser)
+router.post('/login',authController.loginUser)
 
 
 export const authRouter = router

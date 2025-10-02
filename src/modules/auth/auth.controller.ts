@@ -14,11 +14,13 @@ const createUser = async(req:Request,res:Response)=>{
     }
 }
 const loginUser = async(req:Request,res:Response)=>{
+   
     try {
         const result = await AuthService.login(req.body)
+        console.log(result)
         res.status(200).json({
             "message":"user found successful",
-            data:result
+           result
         })
     } catch (error:any) {
         return {success:false, error:error?.message|| 'something went wrong'}

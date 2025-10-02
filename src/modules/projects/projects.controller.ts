@@ -46,3 +46,12 @@ const deleteProject = async(req:Request,res:Response)=>{
         return errorResponse(error)
     }
 }
+
+
+export const projectController ={
+    getAllProject,
+    getSingleProject,
+    createProject,
+    updateProject,
+    deleteProject
+}

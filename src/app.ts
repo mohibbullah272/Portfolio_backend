@@ -3,6 +3,8 @@ import cors from "cors";
 import express from "express";
 import { authRouter } from "./modules/auth/auth.route";
 import { blogRouter } from "./modules/blogs/blogs.route";
+import cookieParser from "cookie-parser";
+import { projectRouter } from "./modules/projects/projects.route";
 
 
 const app = express();
@@ -13,12 +15,12 @@ app.use(compression());
 app.use(express.json()); 
 
 app.use(cors());
-
-app.use('/user',authRouter)
+app.use(cookieParser());
+app.use('/auth',authRouter)
 app.use('/blog',blogRouter)
-
+app.use('/project',projectRouter)
 app.get("/", (_req, res) => {
-  res.send("API is running");
+  res.send("server is running");
 });
 
 

@@ -5,7 +5,7 @@ import prisma from "../../config/db"
 const getAllProject =async()=>{
     try {
         const result = await prisma.projects.findMany()
-        return successResponse(result)
+        return result
     } catch (error:any) {
         console.log(error)
         return errorResponse(error)
@@ -28,7 +28,7 @@ const getSingleProject = async(id:number)=>{
                 id
             }
         })
-        return successResponse(project)
+        return project
     } catch (error:any) {
         return errorResponse(error)
     }
@@ -42,7 +42,7 @@ const createProject = async(payload:Prisma.ProjectsCreateInput)=>{
         const result = await prisma.projects.create({
             data:payload
         })
-        return successResponse(result)
+        return result
     } catch (error:any) {
         console.log(error)
         return errorResponse(error)
@@ -60,7 +60,7 @@ const updateProject = async(payload:Prisma.ProjectsUpdateInput,id:number)=>{
     },
     data:payload
    })
-        return successResponse(result)
+        return result
     } catch (error:any) {
         console.log(error)
         return errorResponse(error)
@@ -76,7 +76,7 @@ const deleteProject = async(id:number)=>{
                 id
             }
         })
-        return successResponse(result)
+        return result
     } catch (error:any) {
         console.log(error)
         return errorResponse(error)
