@@ -10,13 +10,16 @@ interface SessionPayload {
   
   export const authenticateUserFromCookie = (req: Request, res: Response, next: NextFunction) => {
       const token = req.cookies['next-auth.session-token'];
+
       if (!token) return res.status(401).json({ message: 'No session token' });
   
       try {
           // decode JWT (NextAuth stores session as JWT if configured)
-          const secret = process.env.NEXTAUTH_SECRET || 'dev-secret';
+          const secret = process.env.NEXTAUTH_SECRET as string;
+      
           const payload = jwt.verify(token, secret) as SessionPayload;
-  
+     
+
           (req as any).user = {
               id: payload.sub,
               email: payload.email,

@@ -10,11 +10,14 @@ import { projectRouter } from "./modules/projects/projects.route";
 const app = express();
 
 // Middleware
-app.use(cors()); 
+app.use(cors({
+  origin:"http://localhost:3000",
+  credentials: true, 
+}));
 app.use(compression()); 
 app.use(express.json()); 
 
-app.use(cors());
+
 app.use(cookieParser());
 app.use('/auth',authRouter)
 app.use('/blog',blogRouter)
