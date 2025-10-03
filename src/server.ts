@@ -64,12 +64,12 @@ function handleProcessEvents() {
   process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
   process.on("SIGINT", () => gracefulShutdown("SIGINT"));
 
-  process.on("uncaughtException", (error) => {
+  process.on("uncaughtException", (error:any) => {
     console.error("💥 Uncaught Exception:", error);
     gracefulShutdown("uncaughtException");
   });
 
-  process.on("unhandledRejection", (reason) => {
+  process.on("unhandledRejection", (reason:any) => {
     console.error("💥 Unhandled Rejection:", reason);
     gracefulShutdown("unhandledRejection");
   });
